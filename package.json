@@ -8,7 +8,7 @@
     "db-down": "docker-compose down --remove-orphans",
     "watch": "nodemon",
     "generate": "graphql-codegen -r dotenv/config",
-    "start": "ts-node index.ts"
+    "start": "npx knex migrate:latest && npx knex seed:run && ts-node index.ts"
   },
   "author": "lpgera",
   "repository": "lpgera/typescript-knex-apollo-server",
