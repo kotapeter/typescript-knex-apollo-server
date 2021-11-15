@@ -14,7 +14,7 @@ dotenv.config()
 export = {
   client: 'mysql',
   connection: {
-    connectionString: process.env.DB_URL,
+    connectionString: process.env.DATABASE_URL,
     ssl: { rejectUnauthorized: false },
     // host: process.env.DB_HOST,
     // port: process.env.DB_PORT,
