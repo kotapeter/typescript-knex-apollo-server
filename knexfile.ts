@@ -11,6 +11,7 @@ if (
 export = {
   client: 'pg',
   connection: process.env.DATABASE_URL,
+  ssl: { rejectUnauthorized: false },
   searchPath: ['knex', 'public'],
   seeds: {
     directory: './src/db/seeds',
