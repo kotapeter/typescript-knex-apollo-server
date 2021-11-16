@@ -9,8 +9,7 @@ if (
   throw new Error('Please configure the database environment variables first!')
 }
 
-const config = parse('process.env.DATABASE_URL')
-
+const config = parse(process.env.DATABASE_URL)
 
 export = {
   client: 'pg',
