@@ -6,11 +6,15 @@ const numberOfPosts = 128
 const numberOfComments = 1024
 
 export async function seed(knex: Knex): Promise<any> {
-  await knex.raw('SET FOREIGN_KEY_CHECKS=0')
-  await knex('Comment').truncate()
-  await knex('Post').truncate()
-  await knex('User').truncate()
-  await knex.raw('SET FOREIGN_KEY_CHECKS=1')
+  try {
+    await knex.raw('SET FOREIGN_KEY_CHECKS=0')
+    await knex('Comment').truncate()
+    await knex('Post').truncate()
+    await knex('User').truncate()
+    await knex.raw('SET FOREIGN_KEY_CHECKS=1')
+  } catch (e) {
+
+  }
 
   const users = Array.from({ length: numberOfUsers }, () => ({
     firstName: faker.name.firstName(),

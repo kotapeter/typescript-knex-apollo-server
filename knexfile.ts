@@ -3,23 +3,15 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 if (
-  !process.env.DB_HOST ||
-  !process.env.DB_PORT ||
-  !process.env.DB_USER ||
-  !process.env.DB_NAME
+  !process.env.DATABASE_URL
 ) {
   throw new Error('Please configure the database environment variables first!')
 }
 
 export = {
-  client: 'mysql',
-  connection: {
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
-  },
+  client: 'pg',
+  connection: process.env.DATABASE_URL,
+  searchPath: ['knex', 'public'],
   seeds: {
     directory: './src/db/seeds',
   },
